@@ -1,0 +1,10 @@
+{
+	"mysql":
+	{
+		"host": "localhost",
+		"user": "Vin",
+		"password": "",
+		"database": "dbias",
+		"port": "3306"
+	}
+}

@@ -1,0 +1,32 @@
+{
+  "name": "ias.inspection.personnel.acct",
+  "version": "1.0.1",
+  "description": "IAS Inspection and accouting of personnel",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalvinkarlnonato/backendIAS.git"
+  },
+  "keywords": [
+    "IAS",
+    "Personnel",
+    "Acccounting",
+    "Inspection"
+  ],
+  "author": "Kalvin Karl C. Nonato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalvinkarlnonato/backendIAS/issues"
+  },
+  "homepage": "https://github.com/kalvinkarlnonato/backendIAS#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.1.1"
+  }
+}
