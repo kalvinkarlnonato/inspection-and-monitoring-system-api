@@ -3,11 +3,11 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = 3500;
-var corsOptions = {origin: "127.0.0.1"};
+var corsOptions = {origin: "localhost"};
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.get("/home",(req,res)=>{
+app.get("/",(req,res)=>{
 	console.log("Someone visited the server");
 	res.json({message: "Welcome to Inspection Report Generation"});
 });

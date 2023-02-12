@@ -6,15 +6,14 @@ const User = function(user){
 	this.role = user.role;
 	this.confirm = user.confirm;
 }
-
 User.findAll = (result)=>{
 	sql.query("SELECT * FROM users",null,(err,res)=>{
-		err? result(res) : result(null,res);
+		err? result(err) : result(null,res);
 	});
 }
 User.findByEmail = (email,result) => {
 	sql.query("SELECT * FROM users WHERE email=?",email,(err,res)=>{
-		!res.length? result("NOT FOUND"): err?result(err) : result(null,res[0]);
+		err? result(err) : !res.length? result("NOT FOUND") : result(null,res[0]);
 	});
 }
 User.create = (user,result) => {
@@ -22,5 +21,4 @@ User.create = (user,result) => {
 		err? result(err): result(null,{id:res.insertId, ...user});
 	});
 }
-
 module.exports = User;

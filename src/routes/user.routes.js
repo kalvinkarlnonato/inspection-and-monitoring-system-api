@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const user = require("../controllers/user.controller");
+const Users = require("../controllers/user.controller");
+const Auth = require("../middleware/auth");
 module.exports = (app) =>{
-	router.get("/", user.findAll);
-	router.post("/signup",user.signup);
+	router.get("/", [Auth.verifyToken,Users.findAll]);
+	router.post("/signup",Users.signup);
+
+	
+	router.post("/signin",Users.signin);
 	app.use("/users",router);
 }
