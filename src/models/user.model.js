@@ -8,12 +8,12 @@ const User = function(user){
 }
 User.findAll = (result)=>{
 	sql.query("SELECT * FROM users",null,(err,res)=>{
-		err? result(err) : result(null,res);
+		result(err? err : null,res);
 	});
 }
 User.findByEmail = (email,result) => {
 	sql.query("SELECT * FROM users WHERE email=?",email,(err,res)=>{
-		err? result(err) : !res.length? result("NOT FOUND") : result(null,res[0]);
+		result(err? err: !res.length? "NOT FOUND" : null,res[0]);
 	});
 }
 User.create = (user,result) => {

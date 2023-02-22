@@ -1,4 +1,5 @@
 const users = require("./src/routes/user.routes");
+const teams = require("./src/routes/teams.routes")
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -12,5 +13,6 @@ app.get("/",(req,res)=>{
 	res.json({message: "Welcome to Inspection Report Generation"});
 });
 users(app);//users
+teams(app);//teams
 app.get("*", (req, res) => res.json({ error: "page not found" }));
 app.listen(PORT,()=> console.log(`Server now listening on port:${PORT}`));
