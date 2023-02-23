@@ -35,7 +35,7 @@ exports.isSuperUser = (req, res, next) => {
 exports.isAdmin = (req, res, next) => {
 	Users.findById(req.id, (err,user)=>{
 		if(!err){
-			if (user.role === "hr" || user.role === "su") {
+			if (user.role === "tl" || user.role === "su") {
 				next();
 			}else{
 				res.status(403).send({ message: "Require Admin Role!" });
