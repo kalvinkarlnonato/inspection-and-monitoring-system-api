@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 const users = require("../models/user.model");
 const bcrypt = require("bcryptjs");
