@@ -1,7 +1,8 @@
+
+require("dotenv").config();
 const users = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
-const secret = "kalvin-karl-secret-key";
 exports.findAll = (req,res)=>{
 	users.findAll((error,result)=>{
 		if(!error){
@@ -62,7 +63,7 @@ exports.signin = (req,res) => {
 						let token = jwt.sign({
 							id: user.id,
 							email: user.email
-						},secret,{expiresIn: 86400});
+						},process.env.SECRET,{expiresIn: 86400});
 						res.status(200).send({ ...user, token: token});
 					}else{
 						res.status(403).send({message: "Email hasn't been verified yet.", ...user.email});
