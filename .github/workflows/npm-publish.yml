@@ -31,3 +31,9 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          PORT: 3500
+          DBHOST: "localhost"
+          DBUSER: "Vin"
+          DBPASSWORD: ""
+          DBNAME: "dbias"
+          DBPORT: 3306
