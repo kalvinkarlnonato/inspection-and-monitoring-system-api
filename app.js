@@ -1,9 +1,10 @@
+require("dotenv").config();
 const users = require("./src/routes/user.routes");
-const teams = require("./src/routes/teams.routes")
+const teams = require("./src/routes/teams.routes");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const PORT = 3500;
+const PORT = process.env.PORT;
 var corsOptions = {origin: "localhost"};
 app.use(cors(corsOptions));
 app.use(express.json());
