@@ -5,7 +5,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT;
-var corsOptions = {origin: "localhost"};
+var corsOptions = {origin: process.env.ORIGIN};
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
