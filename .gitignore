@@ -1,3 +1,6 @@
 .env
+dist/
+dist/*
 node_modules/
 node_modeuls/*
+
