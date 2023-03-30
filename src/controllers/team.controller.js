@@ -1,6 +1,6 @@
-const teams = require("../models/team.model");
+const team = require("../models/team.model");
 exports.findAll = (req,res) => {
-	teams.findAll((err,result)=>{
+	team.findAll((err,result)=>{
 		if(!err){
 			res.status(200).send(result);
 		}else{
@@ -9,7 +9,7 @@ exports.findAll = (req,res) => {
 	});
 }
 exports.findById = (req,res) => {
-	teams.findbyId(req.params.id.trim(),(error,result)=>{
+	team.findbyId(req.params.id.trim(),(error,result)=>{
 		if(error){
 			res.status(400).send(error);
 		}else{
@@ -24,12 +24,12 @@ exports.create = (req,res) => {
 	}else if(typeof req.body.userid !== "number"){
 		res.status(403).send({ error: "Userid must be number"})
 	}else{
-		let team = new teams({
+		let team = new team({
 			team_name: req.body.team_name,
 			members: req.body.members,
 			userid: req.body.userid
 		});
-		teams.create(team,(error,result) => {
+		team.create(team,(error,result) => {
 			if(error){
 				res.status(400).send({error: "Error found",...error});
 			}else{
@@ -46,8 +46,8 @@ exports.update = (req,res) => {
 		res.status(403).send({ error: "Userid must be number"})
 	}else{
 		let id=req.params.id;
-		let team = new teams(req.body);
-		teams.update(id,team,(error,result) => {
+		let team = new team(req.body);
+		team.update(id,team,(error,result) => {
 			if(error){
 				res.status(400).send(error);
 			}else{
@@ -57,7 +57,7 @@ exports.update = (req,res) => {
 	}
 }
 exports.delete = (req,res) => {
-	teams.delete(req.params.id,(error,result)=>{
+	team.delete(req.params.id,(error,result)=>{
 		if(error){
 			res.status(400).send(error);
 		}else{
