@@ -1,6 +1,6 @@
 require("dotenv").config();
 const jwt = require('jsonwebtoken');
-const Users = require("../models/user.model");
+const user = require("../models/user.model");
 exports.verifyToken = (req, res, next) => {
 	let authHeader = req.get('Authorization');
 	if (!authHeader) {
@@ -18,7 +18,7 @@ exports.verifyToken = (req, res, next) => {
 	}
 }
 exports.isSuperUser = (req, res, next) => {
-	Users.findById(req.id, (err,user)=>{
+	user.findById(req.id, (err,user)=>{
 		if(!err){
 			if (user.role === "su") {
 				next();
@@ -33,7 +33,7 @@ exports.isSuperUser = (req, res, next) => {
 	})
 };
 exports.isAdmin = (req, res, next) => {
-	Users.findById(req.id, (err,user)=>{
+	user.findById(req.id, (err,user)=>{
 		if(!err){
 			if (user.role === "tl" || user.role === "su") {
 				next();

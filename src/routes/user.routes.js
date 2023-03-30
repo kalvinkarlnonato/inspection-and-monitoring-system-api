@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const Users = require("../controllers/user.controller");
-const Auth = require("../middleware/auth");
+const user = require("../controllers/user.controller");
+const auth = require("../middleware/auth");
 module.exports = (app) =>{
-	router.get("/", [Auth.verifyToken,Auth.isSuperUser],Users.findAll);
-	router.post("/signup",Users.signup);
-	router.post("/signin",Users.signin);
-	app.use("/users",router);
+	router.get("/user/all", [auth.verifyToken,auth.isSuperUser],user.findAll);
+	router.post("/user/signup",user.signup);
+	router.post("/user/signin",user.signin);
+	app.use(router);
 }

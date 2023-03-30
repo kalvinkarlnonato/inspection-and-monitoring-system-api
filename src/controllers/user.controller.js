@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 exports.findAll = (req,res)=>{
 	users.findAll((error,result)=>{
 		if(!error){
-			res.send(result);
+			res.status(200).send(result);
 		}else{
 			res.status(400).send({message:"Error retrieving a user in database!", ...error});
 		}

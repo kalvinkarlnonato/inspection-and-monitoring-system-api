@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const teams = require("../controllers/teams.controller");
-const Auth = require("../middleware/auth");
+const auth = require("../middleware/auth");
+
 module.exports = (app) =>{
-	router.get("/all", [Auth.verifyToken,Auth.isSuperUser],teams.findAll);
-	router.post("/add",[Auth.verifyToken,Auth.isSuperUser],teams.create);
-	router.get("/:id",[Auth.verifyToken,Auth.isSuperUser],teams.findById);
-	router.put("/edit/:id",[Auth.verifyToken,Auth.isSuperUser],teams.update);
-	router.delete("/delete/:id",[Auth.verifyToken,Auth.isSuperUser],teams.delete)
-	app.use("/team",router);
+	router.get("/team/all", [auth.verifyToken,auth.isSuperUser],teams.findAll);
+	router.post("/team/add",[auth.verifyToken,auth.isSuperUser],teams.create);
+	router.get("/team/:id",[auth.verifyToken,auth.isSuperUser],teams.findById);
+	router.put("/team/edit/:id",[auth.verifyToken,auth.isSuperUser],teams.update);
+	router.delete("team/delete/:id",[auth.verifyToken,auth.isSuperUser],teams.delete)
+	app.use(router);
 }

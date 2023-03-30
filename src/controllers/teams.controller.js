@@ -1,8 +1,8 @@
-const teams = require("../models/teams.model");
+const teams = require("../models/team.model");
 exports.findAll = (req,res) => {
 	teams.findAll((err,result)=>{
 		if(!err){
-			res.send(result);
+			res.status(200).send(result);
 		}else{
 			res.status(400).send({message:"Error"});
 		}
