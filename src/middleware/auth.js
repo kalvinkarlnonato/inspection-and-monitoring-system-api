@@ -32,13 +32,13 @@ exports.isSuperUser = (req, res, next) => {
 		}
 	})
 };
-exports.isAdmin = (req, res, next) => {
+exports.isInvestigator = (req, res, next) => {
 	user.findById(req.id, (err,user)=>{
 		if(!err){
-			if (user.role === "tl" || user.role === "su") {
+			if (user.role === "ia" || user.role === "su") {
 				next();
 			}else{
-				res.status(403).send({ message: "Require Admin Role!" });
+				res.status(403).send({ message: "Require Investigator Role!" });
 			}
 		}else if("NOT_FOUND"){
 			res.status(404).send({ message: "User not found" });

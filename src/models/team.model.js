@@ -1,5 +1,5 @@
 const sql = require("../utils/database");
-const Team = (team) => {
+const Team = function(team) {
 	this.team_name = team.team_name;
 	this.members = team.members;
 	this.userid = team.userid;
@@ -20,7 +20,7 @@ Team.findbyId = (id,result) => {
 	});
 }
 Team.update = (id,team,result) => {
-	sql.query("UPDATE teams SET team_name=? , members=? , userid=? WHERE id=?",[team.team_name,team.members,team.userid,id],(err,res)=>{
+	sql.query("UPDATE teams SET ? WHERE id="+id,team,(err,res)=>{
 		result(err? err: res.affectedRows==0? "NOT FOUND": null,{id:id,...team});
 	});
 }

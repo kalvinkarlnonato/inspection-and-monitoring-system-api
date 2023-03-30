@@ -3,7 +3,8 @@ const logs = (req,res,next)=>{
 	res.on('finish',()=>{
 		const end=Date.now();
 		const diffSeconds=(end-start)/1000;
-		console.log(`${req.method} ${req.url} completed in ${diffSeconds} seconds`);
+		const status = res.statusCode;
+		console.log(`${req.method} ${req.url} ${status==200?'complete':'error'}${status!=200?status:''} in ${diffSeconds} seconds`);
 	});
 	next();
 }
