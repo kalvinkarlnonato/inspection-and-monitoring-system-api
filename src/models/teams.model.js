@@ -4,7 +4,7 @@ const Teams = (teams) => {
 	this.members = teams.members;
 	this.userid = teams.userid;
 }
-Teams.findAll = (result) => {
+Teams.findAll = function(result) {
 	sql.query("SELECT * FROM teams",null,(err,res) => {
 		result(err? err : null,res);
 	});

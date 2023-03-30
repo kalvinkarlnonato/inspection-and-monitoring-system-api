@@ -1,6 +1,6 @@
 const sql = require("../utils/database");
 
-const User = (user) => {
+const User = function (user){
 	this.email = user.email;
 	this.password = user.password;
 	this.role = user.role;
