@@ -1,15 +1,16 @@
 {
-  "name": "ias.inspection.and.monitoring.system",
-  "version": "0.1.1",
+  "name": "ias-inspection-and-monitoring-system",
+  "version": "1.0.1",
   "description": "IAS Inspection and accouting of personnel and monitoring will get the records of PNP personel",
   "main": "app.js",
   "scripts": {
     "test": "node app.js",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "build": "pkg app.js --out-path dist/ias-inspection-and-monitoring-system"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kalvinkarlnonato/backendIAS.git"
+    "url": "git+https://github.com/kalvinkarlnonato/inspection-and-monitoring-system-api.git"
   },
   "keywords": [
     "IAS",
@@ -21,9 +22,9 @@
   "author": "Kalvin Karl C. Nonato",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kalvinkarlnonato/backendIAS/issues"
+    "url": "https://github.com/kalvinkarlnonato/inspection-and-monitoring-system-api/issues"
   },
-  "homepage": "https://github.com/kalvinkarlnonato/backendIAS#readme",
+  "homepage": "https://github.com/kalvinkarlnonato/inspection-and-monitoring-system-api#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
