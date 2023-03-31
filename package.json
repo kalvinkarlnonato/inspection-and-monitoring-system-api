@@ -1,6 +1,6 @@
 {
   "name": "ias-inspection-and-monitoring-system",
-  "version": "1.0.1",
+  "version": "0.0.2",
   "description": "IAS Inspection and accouting of personnel and monitoring will get the records of PNP personel",
   "main": "app.js",
   "scripts": {
