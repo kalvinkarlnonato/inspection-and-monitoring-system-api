@@ -25,7 +25,7 @@ exports.signup = (req,res) => {
 					let user = new users({
 						email: req.body.email,
 						password: bcrypt.hashSync(req.body.password, 12),
-						role: 0,
+						role: 'ia',
 						confirm: 0
 					});
 					users.create(user,(error,result) => {

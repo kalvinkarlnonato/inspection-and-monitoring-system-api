@@ -24,12 +24,12 @@ exports.create = (req,res) => {
 	}else if(typeof req.body.userid !== "number"){
 		res.status(403).send({ error: "Userid must be number"})
 	}else{
-		let team = new team({
+		let t = new team({
 			team_name: req.body.team_name,
 			members: req.body.members,
 			userid: req.body.userid
 		});
-		team.create(team,(error,result) => {
+		team.create(t,(error,result) => {
 			if(error){
 				res.status(400).send({error: "Error found",...error});
 			}else{
@@ -46,8 +46,8 @@ exports.update = (req,res) => {
 		res.status(403).send({ error: "Userid must be number"})
 	}else{
 		let id=req.params.id;
-		let team = new team(req.body);
-		team.update(id,team,(error,result) => {
+		let t = new team(req.body);
+		team.update(id,t,(error,result) => {
 			if(error){
 				res.status(400).send(error);
 			}else{

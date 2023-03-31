@@ -4,7 +4,7 @@ const logs = (req,res,next)=>{
 		const end=Date.now();
 		const diffSeconds=(end-start)/1000;
 		const status = res.statusCode;
-		console.log(`${req.method} ${req.url} ${status==200?'complete':'error'}${status!=200?status:''} in ${diffSeconds} seconds`);
+		console.log(`${req.method} ${req.url} complete status ${status} in ${diffSeconds} seconds`);
 	});
 	next();
 }
