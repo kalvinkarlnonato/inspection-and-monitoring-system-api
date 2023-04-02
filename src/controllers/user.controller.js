@@ -25,7 +25,7 @@ exports.signup = (req,res) => {
 					let user = new users({
 						email: req.body.email,
 						password: bcrypt.hashSync(req.body.password, 12),
-						role: 'ia',
+						role:  req.body.role,
 						confirm: 0
 					});
 					users.create(user,(error,result) => {
@@ -85,7 +85,7 @@ exports.update = (req,res) => {
 		let user = new users({
 			email: req.body.email,
 			password: bcrypt.hashSync(req.body.password, 12),
-			role: 'ia',
+			role:  req.body.role,
 			confirm: 0
 		});
 		users.update(id,user,(error,result) => {
