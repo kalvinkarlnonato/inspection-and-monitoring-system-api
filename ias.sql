@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `inspections`;
 CREATE TABLE `inspections` (
   `id` int NOT NULL AUTO_INCREMENT,
   `team_id` int DEFAULT NULL,
-  `type_id` int DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
   `datetime` datetime DEFAULT NULL,
   `unit` varchar(150) DEFAULT NULL,
   `deployment_of_personel` varchar(150) DEFAULT NULL,
@@ -39,8 +39,17 @@ CREATE TABLE `inspections` (
   `dispatched` int DEFAULT NULL,
   `absent` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `inspections`
+--
+
+LOCK TABLES `inspections` WRITE;
+/*!40000 ALTER TABLE `inspections` DISABLE KEYS */;
+/*!40000 ALTER TABLE `inspections` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `teams`
@@ -55,8 +64,17 @@ CREATE TABLE `teams` (
   `members` text,
   `userid` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1003 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teams`
+--
+
+LOCK TABLES `teams` WRITE;
+/*!40000 ALTER TABLE `teams` DISABLE KEYS */;
+/*!40000 ALTER TABLE `teams` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `types`
@@ -69,8 +87,17 @@ CREATE TABLE `types` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `types`
+--
+
+LOCK TABLES `types` WRITE;
+/*!40000 ALTER TABLE `types` DISABLE KEYS */;
+/*!40000 ALTER TABLE `types` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -86,8 +113,18 @@ CREATE TABLE `users` (
   `role` varchar(50) DEFAULT NULL,
   `confirm` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'super@ias.com','$2a$12$87oYfrn7NBxElSgKqvlY7.MX3vK3Fj4zOTxm8wz57XzU0Yfvj.RGq','su',1),(2,'admin@ias.com','$2a$12$B9lDSXFwLdfKRkpd2AAGTOgBpISS2Ir/0xHdGgJDW05UVo3yPlnCi','ad',1),(4,'user@ias.com','$2a$12$OVaJej1R5DOxShyxkh5fx.ggUx3E5X.60VExHAGtA2qNyLNyyS8NO','ia',1),(5,'new@ias.com','$2a$12$7ERRv2s9tHoeBkjxNkbAquFjLqTKDM2UvfkQ0IkyZ2cExELjztvjK','ia',0);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping events for database 'ias'
@@ -106,4 +143,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-01  6:39:36
+-- Dump completed on 2023-04-02 15:17:54
