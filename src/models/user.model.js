@@ -26,4 +26,14 @@ User.create = (user,result) => {
 		result(err? err: null,{id:res.insertId, ...user});
 	});
 }
+User.update = (id,user,result) => {
+	sql.query("UPDATE users SET ? WHERE id="+id,user,(err,res)=>{
+		result(err? err: res.affectedRows==0? "NOT FOUND": null,{id:id,...user});
+	});
+}
+User.delete = (id,result) => {
+	sql.query("DELETE FROM users WHERE id=?",id,(err,res)=> {
+		result(err? err: res.affectedRows == 0? "NOT FOUND" : null,res);
+	});
+}
 module.exports = User;

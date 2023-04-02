@@ -74,3 +74,35 @@ exports.signin = (req,res) => {
 		});
 	}
 }
+exports.update = (req,res) => {
+	// Validate request
+	if (!Object.keys(req.body).length) {
+		res.status(400).send({ error: "Content can not be empty!"});
+	}else if(!(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(req.body.email))){
+		res.status(403).send({ error: "Invalid email format"})
+	}else{
+		let id = req.params.id;
+		let user = new users({
+			email: req.body.email,
+			password: bcrypt.hashSync(req.body.password, 12),
+			role: 'ia',
+			confirm: 0
+		});
+		users.update(id,user,(error,result) => {
+			if(error){
+				res.status(400).send(error);
+			}else{
+				res.status(200).send({message:"Successfully update record!",...result});
+			}
+		});
+	}
+}
+exports.delete = (req,res) => {
+	users.delete(req.params.id,(error,result)=>{
+		if(error){
+			res.status(400).send(error);
+		}else{
+			res.status(200).send({message: "Successfully removed record!"});
+		}
+	});
+}
