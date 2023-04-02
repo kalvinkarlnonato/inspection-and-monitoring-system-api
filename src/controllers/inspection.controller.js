@@ -41,8 +41,6 @@ exports.update = (req,res) => {
 		res.status(400).send({ error: "Content can not be empty!"});
 	}else if(typeof req.body.team_id !== "number"){
 		res.status(403).send({ error: "team id must be number"})
-	}else if(typeof req.body.type_id !== "number"){
-		res.status(403).send({ error: "type id must be number"})
 	}else{
 		let id=req.params.id;
 		let inspections = new inspection(req.body);
