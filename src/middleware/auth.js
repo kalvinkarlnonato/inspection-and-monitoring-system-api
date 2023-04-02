@@ -17,13 +17,13 @@ exports.verifyToken = (req, res, next) => {
 		});
 	}
 }
-exports.isSuperUser = (req, res, next) => {
+exports.isUser = (req, res, next) => {
 	user.findById(req.id, (err,user)=>{
 		if(!err){
-			if (user.role === "su") {
+			if (user.role === "su" || user.role === "ad" || user.role === "ia") {
 				next();
 			}else{
-				res.status(403).send({ message: "Requires Super User Role!", owner:"Contact Kalvin Karl C. Nonato", number: "+639984283333", facebook: "https://facebook.com/kalvinkarl28" });
+				res.status(403).send({ message: "Requires a system User!", owner:"Contact Kalvin Karl C. Nonato", number: "+639984283333", facebook: "https://facebook.com/kalvinkarl28" });
 			}
 		}else if("NOT_FOUND"){
 			res.status(404).send({ message: "User not found" });
@@ -32,33 +32,33 @@ exports.isSuperUser = (req, res, next) => {
 		}
 	})
 };
-exports.isAdmin = (req, res, next) => {
-	user.findById(req.id, (err,user)=>{
-		if(!err){
-			if (user.role === "ad") {
-				next();
-			}else{
-				res.status(403).send({ message: "Require Admin Role!" });
-			}
-		}else if("NOT_FOUND"){
-			res.status(404).send({ message: "User not found" });
-		}else{
-			res.status(500).send({ message: "Error retrieving user in database" });
-		}
-	})
-};
-exports.isInvestigator = (req, res, next) => {
-	user.findById(req.id, (err,user)=>{
-		if(!err){
-			if (user.role === "ia") {
-				next();
-			}else{
-				res.status(403).send({ message: "Require Investigator Role!" });
-			}
-		}else if("NOT_FOUND"){
-			res.status(404).send({ message: "User not found" });
-		}else{
-			res.status(500).send({ message: "Error retrieving user in database" });
-		}
-	})
-};
+// exports.isAdmin = (req, res, next) => {
+// 	user.findById(req.id, (err,user)=>{
+// 		if(!err){
+// 			if (user.role === "ad") {
+// 				next();
+// 			}else{
+// 				res.status(403).send({ message: "Require Admin Role!" });
+// 			}
+// 		}else if("NOT_FOUND"){
+// 			res.status(404).send({ message: "User not found" });
+// 		}else{
+// 			res.status(500).send({ message: "Error retrieving user in database" });
+// 		}
+// 	})
+// };
+// exports.isInvestigator = (req, res, next) => {
+// 	user.findById(req.id, (err,user)=>{
+// 		if(!err){
+// 			if (user.role === "ia") {
+// 				next();
+// 			}else{
+// 				res.status(403).send({ message: "Require Investigator Role!" });
+// 			}
+// 		}else if("NOT_FOUND"){
+// 			res.status(404).send({ message: "User not found" });
+// 		}else{
+// 			res.status(500).send({ message: "Error retrieving user in database" });
+// 		}
+// 	})
+// };
