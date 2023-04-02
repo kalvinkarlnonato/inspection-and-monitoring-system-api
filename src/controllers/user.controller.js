@@ -86,7 +86,7 @@ exports.update = (req,res) => {
 			email: req.body.email,
 			password: bcrypt.hashSync(req.body.password, 12),
 			role:  req.body.role,
-			confirm: 0
+			confirm: req.body.confirm
 		});
 		users.update(id,user,(error,result) => {
 			if(error){
