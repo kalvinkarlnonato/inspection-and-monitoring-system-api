@@ -7,12 +7,16 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT;
+const STATUS = process.env.STATUS;
 var corsOptions = { origin: process.env.ORIGIN };
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(logs);
-app.get("/", (req, res) => res.status(200).send({ API: "Inspection Report Generation" }));
+app.get("/", (req, res) =>{
+	if(STATUS==200) res.status(200).send({ success: "connected to Inspection Report Generation API"});
+	if(STATUS==503) res.status(503).send({ message: "the server is down for maintenance"});
+});
 user(app); //user routes
 team(app); //team routes
 inspection(app); //inspection routes
