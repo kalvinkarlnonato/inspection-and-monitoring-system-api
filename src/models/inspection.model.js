@@ -1,7 +1,7 @@
 const sql = require("../utils/database");
 const Inspection = function(inspection) {
 	this.team_id = inspection.team_id;
-	this.type_id = inspection.type_id;
+	this.type = inspection.type;
 	this.datetime = inspection.datetime;
 	this.unit = inspection.unit;
 	this.deployment_of_personel = inspection.deployment_of_personel;
